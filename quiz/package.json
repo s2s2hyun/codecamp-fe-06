@@ -13,16 +13,20 @@
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
     "@mui/material": "^5.5.0",
-    "antd": "^4.19.2",
+    "antd": "^4.19.4",
     "axios": "^0.26.1",
     "graphql": "^16.3.0",
     "next": "12.1.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-player": "^2.10.0",
+    "swr": "^1.2.2"
   },
   "devDependencies": {
+    "@types/node": "^17.0.23",
     "eslint": "8.11.0",
-    "eslint-config-next": "12.1.0"
+    "eslint-config-next": "12.1.0",
+    "typescript": "^4.6.3"
   },
   "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
   "main": "next.config.js",
