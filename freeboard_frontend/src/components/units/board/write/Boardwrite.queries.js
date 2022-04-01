@@ -7,3 +7,11 @@ export const CREATE_BOARD = gql`
         }
     }
 `;
+
+export const UPDATE_Board = gql`
+    mutation updateBoard($updateBoardInput: UpdateBoardInput!) {
+        updateBoard(updateBoardInput: $updateBoardInput, boardId: $boardId, password: $password) {
+            _id
+        }
+    }
+`;

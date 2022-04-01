@@ -16,5 +16,8 @@
     "url": "https://github.com/s2s2hyun/codecamp-fe-06/issues"
   },
   "homepage": "https://github.com/s2s2hyun/codecamp-fe-06#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "react-slick": "^0.28.1"
+  }
 }

@@ -17,7 +17,7 @@ export default function ModalCustomPage() {
     setIsOpen(false);
   };
 
-  const handleComplete = (data) => {
+  const handleComplete = (data: any) => {
     console.log(data);
     setIsOpen(false);
     //setIsopen(false) 가 되어야만 basic modal 창까지 꺼진다
@@ -56,3 +56,6 @@ export default function ModalCustomPage() {
 // p타입에 input 이나 패스워드 등등 사용기능추가 가능
 //modal를 삭제했다가 다시 켜는 방법  /감추는방식 {isOpen}
 //코드를 줄일수가 있다 = 리팩토링
+
+//
+//

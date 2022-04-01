@@ -1,0 +1,4 @@
+export interface IHandleCompleteProps {
+    data?: any;
+    isEdit: boolean;
+}
