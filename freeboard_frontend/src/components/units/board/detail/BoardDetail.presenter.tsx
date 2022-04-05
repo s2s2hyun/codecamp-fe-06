@@ -8,7 +8,7 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
             <S.CardWrapper>
                 <S.Header>
                     <S.AvatarWrapper>
-                        <S.Avatar src="/freeboard/public/image/profile_01.png" />
+                        <S.Avatar src="/image/profile_01.png" />
                         <S.Info>
                             <S.Writer>{props.data?.fetchBoard?.writer}</S.Writer>
                             <S.CreatedAt>{getDate(props.data?.fetchBoard?.createdAt)}</S.CreatedAt>

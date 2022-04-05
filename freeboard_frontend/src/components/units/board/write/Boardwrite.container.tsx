@@ -1,9 +1,10 @@
 import { ChangeEvent, useState } from "react";
 import { useRouter } from "next/router";
 import { useMutation } from "@apollo/client";
-import BoardWriteUI from "./BoardWrite.presenter";
-import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries";
+import BoardWriteUI from "./Boardwrite.presenter";
+import { CREATE_BOARD, UPDATE_BOARD } from "./Boardwrite.queries";
 import { IBoardWriteProps, IUpdateBoardInput } from "./BoardWrite.types";
+import { Modal } from "antd";
 
 export default function BoardWrite(props: IBoardWriteProps) {
     const router = useRouter();
@@ -15,7 +16,6 @@ export default function BoardWrite(props: IBoardWriteProps) {
     const [password, setPassword] = useState("");
     const [title, setTitle] = useState("");
     const [contents, setContents] = useState("");
-
     const [writerError, setWriterError] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [titleError, setTitleError] = useState("");
@@ -103,10 +103,10 @@ export default function BoardWrite(props: IBoardWriteProps) {
                     },
                 });
                 console.log(result);
-                alert("게시물 등록에 성공하였습니다!");
+                Modal.success({ content: "게시물 등록에 성공하였습니다!" });
                 router.push(`/boards/${result.data.createBoard._id}`);
             } catch (error: any) {
-                console.log(error.message);
+                Modal.error({ content: error.message });
             }
         }
     };
@@ -134,10 +134,10 @@ export default function BoardWrite(props: IBoardWriteProps) {
                     updateBoardInput,
                 },
             });
-            alert("게시물 수정에 성공하였습니다!");
+            Modal.success({ content: "게시물 수정에 성공하였습니다!" });
             router.push(`/boards/${router.query.boardId}`);
         } catch (error: any) {
-            alert(error.message);
+            Modal.error({ content: error.message });
         }
     };
 

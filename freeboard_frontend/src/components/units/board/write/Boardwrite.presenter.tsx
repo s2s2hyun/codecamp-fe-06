@@ -1,5 +1,7 @@
 import * as S from "./BoardWrite.styles";
 import { IBoardWriteUIProps } from "./BoardWrite.types";
+// import DaumPostcode, { DaumPostcodeProps } from "react-daum-postcode";
+// import { Modal } from "antd";
 
 export default function BoardWriteUI(props: IBoardWriteUIProps) {
     return (
