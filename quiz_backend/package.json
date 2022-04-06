@@ -1,9 +1,19 @@
 {
-  "name": "quiz_backend",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "dependencies": {
-    "typeorm": "^0.3.4"
-  }
+    "name": "class_backend",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+        "dev": "ts-node-dev index.ts"
+    },
+    "devDependencies": {
+        "typescript": "^4.6.3"
+    },
+    "dependencies": {
+        "apollo-server": "^3.6.7",
+        "graphql": "^16.3.0",
+        "pg": "^8.7.3",
+        "ts-node-dev": "^1.1.8",
+        "typeorm": "^0.3.4"
+    }
 }

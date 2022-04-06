@@ -8,8 +8,6 @@ export const FETCH_BOARD = gql`
             title
             contents
             youtubeUrl
-            likeCount
-            dislikeCount
             boardAddress {
                 zipcode
                 address
@@ -17,5 +15,11 @@ export const FETCH_BOARD = gql`
             }
             createdAt
         }
+    }
+`;
+
+export const DELETE_BOARD = gql`
+    mutation deleteBoard($boardId: ID!) {
+        deleteBoard(boardId: $boardId)
     }
 `;

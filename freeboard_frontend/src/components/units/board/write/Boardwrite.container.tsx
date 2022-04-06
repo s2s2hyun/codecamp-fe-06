@@ -16,6 +16,10 @@ export default function BoardWrite(props: IBoardWriteProps) {
     const [password, setPassword] = useState("");
     const [title, setTitle] = useState("");
     const [contents, setContents] = useState("");
+    const [isOpen, setIsOpen] = useState(false);
+    const [zipcode, setZipcode] = useState("");
+    const [address, setAddress] = useState("");
+    const [addressDetail, setAddressDetail] = useState("");
     const [writerError, setWriterError] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [titleError, setTitleError] = useState("");
@@ -75,6 +79,19 @@ export default function BoardWrite(props: IBoardWriteProps) {
         } else {
             setIsActive(false);
         }
+    };
+    const onClickAddressSearch = () => {
+        setIsOpen(true);
+    };
+
+    const onCompleteAddressSearch = (data: any) => {
+        setAddress(data.address);
+        setZipcode(data.zonecode);
+        setIsOpen(false);
+    };
+
+    const onChangeAddressDetail = (event: ChangeEvent<HTMLInputElement>) => {
+        setAddressDetail(event.target.value);
     };
 
     const onClickSubmit = async () => {
@@ -152,6 +169,13 @@ export default function BoardWrite(props: IBoardWriteProps) {
             onChangePassword={onChangePassword}
             onChangeTitle={onChangeTitle}
             onChangeContents={onChangeContents}
+            onChangeAddressDetail={onChangeAddressDetail}
+            onClickAddressSearch={onClickAddressSearch}
+            onCompleteAddressSearch={onCompleteAddressSearch}
+            isOpen={isOpen}
+            zipcode={zipcode}
+            address={address}
+            addressDetail={addressDetail}
             onClickSubmit={onClickSubmit}
             onClickUpdate={onClickUpdate}
             isEdit={props.isEdit}

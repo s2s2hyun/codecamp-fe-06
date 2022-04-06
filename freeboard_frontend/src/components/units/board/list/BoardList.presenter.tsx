@@ -16,7 +16,7 @@ export default function BoardListUI(props: IBoardListUIProps) {
             {props.data?.fetchBoards.map((el: any) => (
                 <S.Row key={el._id}>
                     <S.ColumnBasic>{String(el._id).slice(-4).toUpperCase()}</S.ColumnBasic>
-                    {/* <input type="text" id="bbb" onClick={props.onClickMoveToBoardDetail}/> */}
+                    {/* <input type="text" id="bbb" onClick={props.onClickMoveToBoardDetail} /> */}
                     <S.ColumnTitle id={el._id} onClick={props.onClickMoveToBoardDetail}>
                         {el.title}
                     </S.ColumnTitle>
@@ -27,7 +27,7 @@ export default function BoardListUI(props: IBoardListUIProps) {
             <S.TableBottom />
             <S.Footer>
                 <S.Button onClick={props.onClickMoveToBoardNew}>
-                    <S.PenIcon src="/freeboard/public/image/penicon1.png" />
+                    <S.PenIcon src="/image/penicon1.png" />
                     게시물 등록하기
                 </S.Button>
             </S.Footer>
