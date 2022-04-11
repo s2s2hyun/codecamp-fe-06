@@ -10,6 +10,6 @@ export const globalStyles = css`
 
     @font-face {
         font-family: "myfont";
-        src: url("/fonts/scifibit.ttf");
+        src: url("/fonts/NotoSansKR-Bold.otf");
     }
 `;

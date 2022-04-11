@@ -7,11 +7,11 @@ import Layoutheader from "./header";
 import { useRouter } from "next/router";
 
 const Body = styled.div`
-    height: 500px;
+    height: 550px;
 `;
 
 const LayoutSidebar = styled.div`
-    width: 450px;
+    width: 100px;
     height: 500px;
     background-color: blue;
 `;

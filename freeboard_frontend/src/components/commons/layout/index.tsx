@@ -1,5 +1,5 @@
-import LayoutBanner from "./banner";
-import LayoutNavigation from "./navigation";
+import LayoutBanner from "./banner/LayoutBanner.container";
+import LayoutNavigation from "./Navigation/LayoutNavtigation.container";
 import styled from "@emotion/styled";
 import { ReactNode } from "react";
 import Layoutheader from "./header";
@@ -12,7 +12,7 @@ const Body = styled.div`
 const LayoutSidebar = styled.div`
     width: 450px;
     height: 500px;
-    background-color: blue;
+    background-color: white;
 `;
 
 // const HIDDEN_HEADER = ["/12-05-modal-refactoring"];

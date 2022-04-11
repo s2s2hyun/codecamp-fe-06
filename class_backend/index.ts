@@ -81,6 +81,7 @@ const AppDataSource = new DataSource({
 AppDataSource.initialize()
     .then(() => {
         console.log("연결성공");
+
         //백엔드 API를 오픈-리슨(24시간 동안 접속가능하게끔 대기상태로 만들어주기)
         server.listen(4000).then(({ url }) => {
             console.log(`🚀 Server ready at ${url}`);
