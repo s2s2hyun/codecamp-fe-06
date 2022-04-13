@@ -9,11 +9,11 @@ const Body = styled.div`
     height: 500px;
 `;
 
-const LayoutSidebar = styled.div`
-    width: 450px;
-    height: 500px;
-    background-color: white;
-`;
+// const LayoutSidebar = styled.div`
+//     width: 450px;
+//     height: 500px;
+//     background-color: white;
+// `;
 
 // const HIDDEN_HEADER = ["/12-05-modal-refactoring"];
 
@@ -38,7 +38,7 @@ export default function Layout(props: ILayoutProps) {
             <LayoutBanner />
             <LayoutNavigation />
             <BodyWrapper>
-                <LayoutSidebar></LayoutSidebar>
+                {/* <LayoutSidebar></LayoutSidebar> */}
                 <Body>{props.children}</Body>
             </BodyWrapper>
         </>
