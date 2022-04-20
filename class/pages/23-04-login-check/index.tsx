@@ -28,6 +28,8 @@ export default function LoginPage() {
   };
 
   const onClickLogin = async () => {
+    // 1. 로그인 하기
+
     const result = await loginUser({
       variables: {
         email,
@@ -35,9 +37,15 @@ export default function LoginPage() {
       },
     });
     const accessToken = result.data.loginUser.accessToken;
+
+    // 2. 유저 정보 받아오기(14일 수업내용 query )
+    //
+
+    // 3. 글로벌스테이트 저장하기
     setAccessToken(accessToken);
     localStorage.setItem("accessToken", accessToken);
-    console.log(accessToken);
+
+    // 4. 로그인 성공페이지로 이동하기
     alert("로그인에 성공하였습니다!!.");
     router.push("/23-05-login-check-success");
   };

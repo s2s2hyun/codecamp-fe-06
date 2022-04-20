@@ -7,10 +7,11 @@ import {
 import { createUploadLink } from "apollo-upload-client";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { accessTokenState } from "../../../commons/store/index";
+import { accessTokenState, userInfoState } from "../../../commons/store/index";
 
 export default function ApolloSetting(props) {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
+  const [, setUserInfo] = useRecoilState(userInfoState);
 
   if (typeof window === "undefined") {
     console.log("여기는 브라우저");
@@ -20,7 +21,9 @@ export default function ApolloSetting(props) {
   // 3. 세번째 방법으로 하고있습니다 현재는
   useEffect(() => {
     const mylocalstorageAccessToken = localStorage.getItem("accessToken");
+    const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
     setAccessToken(mylocalstorageAccessToken || "");
+    setUserInfo(userInfo);
   }, []);
   // //////////////////////////////////////////////////////////////
   //  1. 여기는 이제 지원 하지 않음

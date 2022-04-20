@@ -41,7 +41,7 @@ export default function Layout(props: ILayoutProps) {
                 <LayoutSidebar></LayoutSidebar>
                 <Body>{props.children}</Body>
             </BodyWrapper>
-            <Layoutfooter />
+            {/* <Layoutfooter /> */}
         </>
     );
 }

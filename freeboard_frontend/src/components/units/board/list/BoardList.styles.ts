@@ -20,6 +20,7 @@ export const Row = styled.div`
     height: 52px;
     line-height: 52px;
     border-bottom: 1px solid gray;
+
     :hover {
         color: blue;
     }
@@ -44,6 +45,7 @@ export const ColumnTitle = styled.div`
     width: 70%;
     text-align: center;
     cursor: pointer;
+
     :hover {
         color: blue;
     }
@@ -56,7 +58,7 @@ export const Footer = styled.div`
     padding-top: 50px;
 `;
 
-export const PenIcon = styled.img``;
+export const PencilIcon = styled.img``;
 
 export const Button = styled.button`
     width: 171px;
@@ -68,6 +70,7 @@ export const Button = styled.button`
     justify-content: space-evenly;
     align-items: center;
     cursor: pointer;
+
     :hover {
         background-color: #f5f2fc;
     }

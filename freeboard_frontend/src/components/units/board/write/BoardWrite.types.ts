@@ -15,6 +15,8 @@ export interface ISubmitButtonProps {
 }
 
 export interface IBoardWriteUIProps {
+    fileUrls: any;
+    onChangeFileUrls: any;
     isActive: boolean;
     writerError: string;
     passwordError: string;

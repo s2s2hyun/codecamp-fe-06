@@ -39,7 +39,7 @@ export default function LoginPage() {
     localStorage.setItem("accessToken", accessToken);
     console.log(accessToken);
     alert("로그인에 성공하였습니다!!.");
-    router.push("23-02-login-localstorage-success");
+    router.push("/23-02-login-localstorage-success");
   };
 
   return (

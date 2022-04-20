@@ -17,6 +17,15 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
                 </S.Header>
                 <S.Body>
                     <S.Title>{props.data?.fetchBoard?.title}</S.Title>
+                    <S.ImageWrapper>
+                        {props.data?.fetchBoard.images
+                            ?.filter((el: string) => el)
+                            .map((el: string) => (
+                                <div key={el}>
+                                    <S.Image src={`https://storage.googleapis.com/${el}`} />
+                                </div>
+                            ))}
+                    </S.ImageWrapper>
                     <S.Contents>{props.data?.fetchBoard?.contents}</S.Contents>
                 </S.Body>
             </S.CardWrapper>

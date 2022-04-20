@@ -16,6 +16,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
     const [password, setPassword] = useState("");
     const [title, setTitle] = useState("");
     const [contents, setContents] = useState("");
+    const [fileUrls, setFileUrls] = useState(["", "", ""]);
     const [isOpen, setIsOpen] = useState(false);
     const [zipcode, setZipcode] = useState("");
     const [address, setAddress] = useState("");
@@ -94,6 +95,12 @@ export default function BoardWrite(props: IBoardWriteProps) {
         setAddressDetail(event.target.value);
     };
 
+    const onChangeFileUrls = (fileUrl: string, index: number) => {
+        const newFileUrls = [...fileUrls];
+        newFileUrls[index] = fileUrl;
+        setFileUrls(newFileUrls);
+    };
+
     const onClickSubmit = async () => {
         if (writer === "") {
             setWriterError("작성자를 입력해주세요.");
@@ -116,6 +123,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
                             password: password,
                             title: title,
                             contents: contents,
+                            images: fileUrls,
                         },
                     },
                 });
@@ -138,10 +146,14 @@ export default function BoardWrite(props: IBoardWriteProps) {
             alert("비밀번호를 입력해주세요.");
             return;
         }
+        const currentFiles = JSON.stringify(fileUrls);
+        const defaultFiles = JSON.stringify(props.data.fetchBoard.images);
+        const isChangedFiles = currentFiles !== defaultFiles;
 
         const updateBoardInput: IUpdateBoardInput = {};
         if (title) updateBoardInput.title = title;
         if (contents) updateBoardInput.contents = contents;
+        if (isChangedFiles) updateBoardInput.images = fileUrls;
 
         try {
             await updateBoard({
@@ -169,6 +181,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
             onChangePassword={onChangePassword}
             onChangeTitle={onChangeTitle}
             onChangeContents={onChangeContents}
+            onChangeFileUrls={onChangeFileUrls}
             onChangeAddressDetail={onChangeAddressDetail}
             onClickAddressSearch={onClickAddressSearch}
             onCompleteAddressSearch={onCompleteAddressSearch}
@@ -180,6 +193,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
             onClickUpdate={onClickUpdate}
             isEdit={props.isEdit}
             data={props.data}
+            fileUrls={fileUrls}
         />
     );
 }

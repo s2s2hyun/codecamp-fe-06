@@ -30,10 +30,12 @@ export default function MapBoardPage() {
   };
 
   const onClickPrevPage = () => {
+    if (startPage === 1) return;
     setStartPage((prev) => prev - 10);
   };
 
   const onClickNextPage = () => {
+    if (startPage + 10 > lastPage) return;
     setStartPage((prev) => prev + 10);
   };
 
