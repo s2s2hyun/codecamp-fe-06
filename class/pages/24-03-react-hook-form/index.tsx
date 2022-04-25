@@ -9,7 +9,7 @@ interface IFormValues {
 export default function ReactHookFormPage() {
   const { register, handleSubmit } = useForm();
 
-  //data 를 아래 넣어줄껀대 아래 mywirter , title ,contents 등이 들어가준다 handlesubmit 으로 감싸므로
+  // data 를 아래 넣어줄껀대 아래 mywirter , title ,contents 등이 들어가준다 handlesubmit 으로 감싸므로
   const onClickSubmit = (data: IFormValues) => {
     console.log(data);
   };

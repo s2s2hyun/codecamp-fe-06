@@ -21,6 +21,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
     const [zipcode, setZipcode] = useState("");
     const [address, setAddress] = useState("");
     const [addressDetail, setAddressDetail] = useState("");
+    const [youtubeUrl, setYoutubeUrl] = useState("");
     const [writerError, setWriterError] = useState("");
     const [passwordError, setPasswordError] = useState("");
     const [titleError, setTitleError] = useState("");
@@ -101,6 +102,10 @@ export default function BoardWrite(props: IBoardWriteProps) {
         setFileUrls(newFileUrls);
     };
 
+    const onChangeYoutubeUrl = (event: ChangeEvent<HTMLInputElement>) => {
+        setYoutubeUrl(event.target.value);
+    };
+
     const onClickSubmit = async () => {
         if (writer === "") {
             setWriterError("작성자를 입력해주세요.");
@@ -124,6 +129,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
                             title: title,
                             contents: contents,
                             images: fileUrls,
+                            youtubeUrl: youtubeUrl,
                         },
                     },
                 });
@@ -154,6 +160,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
         if (title) updateBoardInput.title = title;
         if (contents) updateBoardInput.contents = contents;
         if (isChangedFiles) updateBoardInput.images = fileUrls;
+        if (youtubeUrl) updateBoardInput.youtubeUrl = youtubeUrl;
 
         try {
             await updateBoard({
@@ -185,6 +192,7 @@ export default function BoardWrite(props: IBoardWriteProps) {
             onChangeAddressDetail={onChangeAddressDetail}
             onClickAddressSearch={onClickAddressSearch}
             onCompleteAddressSearch={onCompleteAddressSearch}
+            onChangeYoutubeUrl={onChangeYoutubeUrl}
             isOpen={isOpen}
             zipcode={zipcode}
             address={address}

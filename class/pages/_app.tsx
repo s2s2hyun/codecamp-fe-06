@@ -28,14 +28,22 @@ export const firebaseApp = initializeApp(firebaseConfig);
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <RecoilRoot>
-      <ApolloSetting>
-        <Global styles={globalStyles} />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ApolloSetting>
-    </RecoilRoot>
+    <div>
+      {/* <Head>
+        <script
+          type="text/javascript"
+          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9d99a2f189c81d29d915f1ce22b73df7"
+        ></script>
+      </Head> */}
+      <RecoilRoot>
+        <ApolloSetting>
+          <Global styles={globalStyles} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ApolloSetting>
+      </RecoilRoot>
+    </div>
   );
 }
 // <Recoilroot>를 함으로써 나머지 폴더에서도 편하게 리코일루트를 편하게 저장해서 쓸수있다.

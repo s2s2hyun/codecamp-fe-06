@@ -9,7 +9,6 @@ import { useQuery, gql } from "@apollo/client";
 import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
 import { IBoard } from "../../../src/commons/types/generated/types";
-import { getDate } from "../../../src/commons/libraries/utils";
 
 const FETCH_BOARDS = gql`
     query fetchBoards {
@@ -17,33 +16,36 @@ const FETCH_BOARDS = gql`
             _id
             writer
             title
+            contents
         }
     }
 `;
 
 const Wrapper = styled.div`
+    width: 100%;
+    height: auto;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 `;
 
 const MyRow = styled.div`
+    width: 100%;
+    height: auto;
     display: flex;
+    flex-direction: row;
 `;
 
 const MyColumn = styled.div`
     width: 30%;
+    height: auto;
+    border: 1px solid gray;
+    font-size: 18px;
 `;
-const HistoryLocalStorageStage = styled.div`
-    width: 50%;
-`;
-
-const LocalQ = styled.div`
+const Wrapperlit = styled.div`
+    width: 100%;
+    height: auto;
     display: flex;
-    flex-direction: row;
-`;
-
-const HistoryColumn = styled.div`
-    width: 30%;
+    flex-direction: column;
 `;
 
 const getDate = (date) => {
@@ -64,6 +66,12 @@ const getDate = (date) => {
 export default function HistoryLocalStorage() {
     const { data } = useQuery(FETCH_BOARDS);
     const [historyItems, setHistoryItems] = useState([]);
+    const Today = new Date().toISOString().slice(0, 10);
+
+    useEffect(() => {
+        const baskets = JSON.parse(localStorage.getItem(getDate(new Date())) || "[]");
+        setHistoryItems(baskets);
+    }, []);
 
     const onClickTodayHistory = (el: IBoard) => () => {
         const baskets = JSON.parse(localStorage.getItem(getDate(new Date())) || "[]");
@@ -89,31 +97,25 @@ export default function HistoryLocalStorage() {
         setHistoryItems(newBaskets);
     };
 
-    useEffect(() => {
-        const baskets = JSON.parse(localStorage.getItem(getDate(new Date())) || "[]");
-        setHistoryItems(baskets);
-    }, []);
-
     return (
         <Wrapper>
-            <div>
+            <Wrapperlit>
                 {data?.fetchBoards.map((el: IBoard) => (
                     <MyRow key={el._id} onClick={onClickTodayHistory(el)}>
                         <MyColumn>{el.writer}</MyColumn>
                         <MyColumn>{el.title}</MyColumn>
                     </MyRow>
                 ))}
-
-                <HistoryLocalStorageStage>
-                    {historyItems.map((el: IBoard) => (
-                        <LocalQ key={el._id}>
-                            <HistoryColumn>{el.writer}</HistoryColumn>
-                            <HistoryColumn>{el.title}</HistoryColumn>
-                        </LocalQ>
-                    ))}
-                </HistoryLocalStorageStage>
-            </div>
-            <hr></hr>
+            </Wrapperlit>
+            <Wrapperlit>
+                <h2>오늘 열어본 게시글</h2>
+                {historyItems.map((el: IBoard) => (
+                    <MyRow>
+                        <MyColumn>{el.writer}</MyColumn>
+                        <MyColumn>{el.title}</MyColumn>
+                    </MyRow>
+                ))}
+            </Wrapperlit>
         </Wrapper>
     );
 }

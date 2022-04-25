@@ -10,6 +10,26 @@ export const TableTop = styled.div`
     margin-top: 20px;
 `;
 
+export const SearchWrapper = styled.div`
+    margin-bottom: 40px;
+`;
+
+export const SearchInput = styled.input`
+    width: 680px;
+    height: 52px;
+    background: #f2f2f2;
+    border-radius: 10px;
+`;
+
+export const SearchDate = styled.input`
+    width: 244px;
+    height: 52px;
+    padding: 14px 16px;
+    background: #ffffff;
+    border: 1px solid #bdbdbd;
+    box-sizing: border-box;
+`;
+
 export const TableBottom = styled.div`
     border-bottom: 2px solid gray;
 `;
@@ -74,4 +94,7 @@ export const Button = styled.button`
     :hover {
         background-color: #f5f2fc;
     }
+`;
+export const Word = styled.span`
+    color: ${(props: IProps) => (props.isMatched ? "red" : "black")};
 `;

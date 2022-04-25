@@ -5,4 +5,11 @@ export interface IBoardDetailUIProps {
     onClickMoveToBoardList: () => void;
     onClickMoveToBoardEdit: () => void;
     onClickDelete: () => void;
+    onClickLike: () => void;
+    onClickDislike: () => void;
 }
+
+// export interface IUpdateBoardCommentInput {
+//     contents?: string;
+//     rating?: number;
+// }

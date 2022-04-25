@@ -39,7 +39,7 @@ const Word = styled.span`
 
 export default function MapBoardPage() {
   // const [search, setSearch] = useState("");
-  const [keyword, setkeyword] = useState("");
+  const [keyword, setKeyword] = useState("");
 
   const onClickPage = (event) => {
     refetch({ page: Number(event.target.id) });
@@ -52,7 +52,7 @@ export default function MapBoardPage() {
 
   const getDebounce = _.debounce((data) => {
     refetch({ search: data, page: 1 });
-    setkeyword(data);
+    setKeyword(data);
   }, 200);
 
   const onChangeSearch = (event: ChangeEvent<HTMLInputElement>) => {
