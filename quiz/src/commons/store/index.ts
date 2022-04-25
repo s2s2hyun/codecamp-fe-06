@@ -22,3 +22,5 @@ export const visitedPageState = atom({
     key: "visitedPageState",
     default: "/",
 });
+
+// 글로벌 스테이트 isEditState 로 만든다 아톰으로

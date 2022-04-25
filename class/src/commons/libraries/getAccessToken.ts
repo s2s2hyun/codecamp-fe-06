@@ -2,7 +2,7 @@ import { GraphQLClient, gql } from "graphql-request";
 
 const RESTORE_ACCESS_TOKEN = gql`
   mutation restoreAceessToken {
-    restoreAceessToken {
+    restoreAccessToken {
       accessToken
     }
   }
@@ -15,6 +15,7 @@ export async function getAccessToken() {
       { credentials: "include" }
     );
     const result = await graphQLClient.request(RESTORE_ACCESS_TOKEN);
+    console.log("refreshToken", result);
     const newAccessToken = result.restoreAccessToken.accessToken;
     return newAccessToken;
   } catch (error) {
