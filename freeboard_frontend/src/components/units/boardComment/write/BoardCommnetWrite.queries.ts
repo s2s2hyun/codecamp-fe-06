@@ -1,11 +1,8 @@
 import { gql } from "@apollo/client";
 
-export const CREATE_BOARD_COMMNET = gql`
-    mutation createBoardCommnet($createBoardCommentInput: CreateBoardCommentInput!, $boardId: ID!) {
-        createBoardCommnetInput(
-            createBoardCommentInput: $createBoardCommentInput
-            boardId: $boardId
-        ) {
+export const CREATE_BOARD_COMMENT = gql`
+    mutation createBoardComment($createBoardCommentInput: CreateBoardCommentInput!, $boardId: ID!) {
+        createBoardComment(createBoardCommentInput: $createBoardCommentInput, boardId: $boardId) {
             _id
         }
     }
@@ -17,10 +14,10 @@ export const UPDATE_BOARD_COMMENT = gql`
         $password: String
         $boardCommentId: ID!
     ) {
-        updateBoardCommentInput(
-            updateBoardCommentInput: $updateBoardCommnetInput
+        updateBoardComment(
+            updateBoardCommentInput: $updateBoardCommentInput
             password: $password
-            boardCommentId: $boardCommendId
+            boardCommentId: $boardCommentId
         ) {
             _id
         }

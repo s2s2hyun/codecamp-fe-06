@@ -1,32 +1,28 @@
+import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
-import BoardCommentWriteUI from "./BoardCommentWrite.presenter";
 import {
     IMutation,
     IMutationCreateBoardCommentArgs,
     IMutationUpdateBoardCommentArgs,
     IUpdateBoardCommentInput,
 } from "../../../../commons/types/generated/types";
-import { useMutation } from "@apollo/client";
-import {
-    CREATE_BOARD_COMMNET,
-    UPDATE_BOARD_COMMENT,
-} from "../../../units/boardComment/write/BoardCommnetWrite.queries";
+import BoardCommentWriteUI from "./BoardCommentWrite.presenter";
 import { FETCH_BOARD_COMMENTS } from "../list/BoardCommentList.queries";
+import { CREATE_BOARD_COMMENT, UPDATE_BOARD_COMMENT } from "./BoardCommnetWrite.queries";
 import { IBoardCommentWriteProps } from "./BoardCommentWrite.types";
 
 export default function BoardCommentWrite(props: IBoardCommentWriteProps) {
     const router = useRouter();
     const [writer, setWriter] = useState("");
     const [password, setPassword] = useState("");
-    const [star, setStar] = useState(0);
     const [contents, setContents] = useState("");
+    const [star, setStar] = useState(0);
 
     const [createBoardComment] = useMutation<
         Pick<IMutation, "createBoardComment">,
         IMutationCreateBoardCommentArgs
-    >(CREATE_BOARD_COMMNET);
-
+    >(CREATE_BOARD_COMMENT);
     const [updateBoardComment] = useMutation<
         Pick<IMutation, "updateBoardComment">,
         IMutationUpdateBoardCommentArgs
@@ -36,16 +32,16 @@ export default function BoardCommentWrite(props: IBoardCommentWriteProps) {
         setWriter(event.target.value);
     };
 
-    const onChagePassword = (event: ChangeEvent<HTMLInputElement>) => {
+    const onChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
         setPassword(event.target.value);
     };
 
-    const onChangeStar = (value = Number) => {
-        setStar(value);
+    const onChangeContents = (event: ChangeEvent<HTMLTextAreaElement>) => {
+        setContents(event.target.value);
     };
 
-    const onChangeContents = (event: ChangeEvent<HTMLInputElement>) => {
-        setContents(event.target.value);
+    const onChangeStar = (value: number) => {
+        setStar(value);
     };
 
     const onClickWrite = async () => {
@@ -74,13 +70,14 @@ export default function BoardCommentWrite(props: IBoardCommentWriteProps) {
 
     const onClickUpdate = async () => {
         if (!contents) {
-            alert("내용 수정이 없습니다.");
+            alert("내용이 수정되지 않았습니다.");
             return;
         }
         if (!password) {
-            alert("비밀번호가 올바르지 않습니다.");
+            alert("비밀번호가 입력되지 않았습니다.");
             return;
         }
+
         try {
             if (!props.el?._id) return;
 
@@ -110,9 +107,9 @@ export default function BoardCommentWrite(props: IBoardCommentWriteProps) {
     return (
         <BoardCommentWriteUI
             onChangeWriter={onChangeWriter}
-            onChagePassword={onChagePassword}
-            onChangeStar={onChangeStar}
+            onChangePassword={onChangePassword}
             onChangeContents={onChangeContents}
+            onChangeStar={onChangeStar}
             onClickWrite={onClickWrite}
             onClickUpdate={onClickUpdate}
             isEdit={props.isEdit}
