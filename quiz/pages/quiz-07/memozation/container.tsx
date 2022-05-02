@@ -8,19 +8,19 @@ export default function MemoizationContainerPage() {
     const [countState, setCountState] = useState(0);
 
     // useMemo 는 많이 쓰이지 않으며 useCallback 을 많이 쓰인다. 함수가 다시 사용되지않도록 사용한다.
-    const aaa = useMemo(() => Math.random(), []);
-    console.log(aaa);
+    // const aaa = useMemo(() => Math.random(), []);
+    // console.log(aaa);
 
     const onClickCountLet = useCallback(() => {
         console.log(countLet + 1);
         countLet += 1; // countLet = countLet + 1
     }, []);
 
-    // const onClickCountState = useCallback(() => {
-    //     console.log(countState + 1);
-    //     // setCountState(countState + 1);
-    //     setCountState((prev) => prev + 1);
-    // }, []);
+    const onClickCountState = useCallback(() => {
+        console.log(countState + 1);
+        // setCountState(countState + 1);
+        setCountState((prev) => prev + 1);
+    }, []);
 
     // 카운트 버튼을 누를때 마다 1에 데이터가 쌓이게 되며 , 렌더링 카운트 숫자가 증가가 안되고 1에서 멈춘다 .
     // state 까지 같이 기억을 해버린 상황이다.
@@ -36,31 +36,32 @@ export default function MemoizationContainerPage() {
 
     // 9번퀴즈 useMemo를 활용하여 함수를 기억하도록 만들 수도 있습니다. 위 8번에서 만든 함수를 useMemo를 사용해서 변경해 보세요.
 
-    const onClickCountState = useMemo(() => {
+    const onClickCountUseMemo = useMemo(() => {
         return () => {
             console.log(countState + 1); // 콘솔 생략
-            setCountState(countState + 1);
+            setCountState((prev) => prev + 1);
         };
     }, []);
-
-    //    ↑  카운트 버튼을 누를때 마다 1에 데이터가 쌓이게 되며 , 렌더링 카운트 숫자가 증가가 안되고 1에서 멈춘다 .
 
     return (
         <div>
             <h1>이것은 컨테이너 입니다.</h1>
             <div>카운트(let): {countLet} </div>
-            {/* <button onClick={onClickCountLet}>카운트 (let) +1 올리기!!! </button> */}
-            <button onClick={() => {}}>카운트 (let) +1 올리기!!! </button>
+            <button onClick={onClickCountLet}>카운트 (let) +1 올리기!!! </button>
+            {/* <button onClick={() => {}}>카운트 (let) +1 올리기!!! </button> */}
             <div>카운트(state): {countState} </div>
-            {/* <button onClick={onClickCountState}>카운트 (state) +1 올리기!!! </button> */}
-            <button
+            <button onClick={onClickCountState}>카운트 (state) +1 올리기!!! </button>
+            {/* <button
                 onClick={() => {
                     setCountState((prev) => prev + 1);
                 }}
             >
                 카운트 (state) +1 올리기!!!{" "}
-            </button>
-            <MemoizationPresenterPage countState={countState} />
+            </button> */}
+
+            <button onClick={onClickCountUseMemo}>카운트(state) + 1 올리기</button>
+            <div>카운트(useMemo):{countState}</div>
+            <MemoizationPresenterPage />
         </div>
     );
 }

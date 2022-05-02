@@ -13,12 +13,14 @@ import { getAccessToken } from "../../../commons/libraries/getAccessToken";
 
 export default function ApolloSetting(props) {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
-  // const [, setUserInfo] = useRecoilState(userInfoState);
+  const [, setUserInfo] = useRecoilState(userInfoState);
 
-  if (typeof window === "undefined") {
-    console.log("여기는 브라우저");
+  if (typeof window !== "undefined") {
+    console.log("여기는 브라우저다!!!");
+    // const mylocalstorageAccessToken = localStorage.getItem("accessToken");
+    // setAccessToken(mylocalstorageAccessToken || "");
   } else {
-    console.log("여기는 프론트엔드 서버다 !!(yarn dev이다!!");
+    console.log("여기는 프론트엔드 서버다!!!(yarn dev 다!!!)");
   }
   // 3. 세번째 방법으로 하고있습니다 현재는
   useEffect(() => {
@@ -27,10 +29,30 @@ export default function ApolloSetting(props) {
     // setAccessToken(mylocalstorageAccessToken || "");
     // setUserInfo(userInfo);
     // accessToken 재발급 받아서 state 에 넣어주기
-    getAccessToken().then((newAccessToken) => {
-      setAccessToken(newAccessToken);
-    });
+
+    // if (!isLoaded && !accessToken) {
+    //   alert("로그인후 이용가능합니다 !!!");
+    //   router.push("/22-01-login");
+    // }
+    const accessToken = localStorage.getItem("accessToken");
+    const userInfo = JSON.parse(localStorage.getItem("userInfo") || "{}");
+    setAccessToken(accessToken || "");
+    setUserInfo(userInfo);
   }, []);
+
+  //   getAccessToken().then((newAccessToken) => {
+  //     setAccessToken(newAccessToken);
+  //   });
+  // }, []);
+
+  // if(!accessToken){getAccessToken().then((newAccessToken) => {
+  //   setAccessToken(newAccessToken);
+  //   if(!newAccessToken){
+  //     alert("로그인후 이용가능합니다 !!!")
+  // router.push("/22-01-login")
+  //   }
+  // })}
+
   // //////////////////////////////////////////////////////////////
   //  1. 여기는 이제 지원 하지 않음
   // if (process.browser){

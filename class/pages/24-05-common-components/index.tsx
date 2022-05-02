@@ -34,7 +34,7 @@ export default function ReactHookFormPage() {
   });
 
   // yupResolver + schema 합쳐졌다
-  //data 를 아래 넣어줄껀대 아래 mywirter , title ,contents 등이 들어가준다 handlesubmit 으로 감싸므로
+  //  data 를 아래 넣어줄껀대 아래 mywirter , title ,contents 등이 들어가준다 handlesubmit 으로 감싸므로
   const onClickSubmit = (data: IFormValues) => {
     console.log(data);
   };
@@ -55,4 +55,4 @@ export default function ReactHookFormPage() {
   );
 }
 
-//yup 은 에러를 잡아주는 라이브러리 이다.
+// yup 은 에러를 잡아주는 라이브러리 이다.

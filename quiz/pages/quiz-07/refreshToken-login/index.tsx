@@ -36,11 +36,11 @@ export default function LoginPage() {
                 password: password,
             },
         });
-        const accessToken = result.data.loginUserExample.accessToken;
+        const accessToken = result.data.loginUser.accessToken;
         setAccessToken(accessToken);
         console.log(accessToken);
         alert("로그인에 성공하였습니다!!.");
-        router.push("refreshToken-success");
+        router.push("/boards");
     };
 
     return (

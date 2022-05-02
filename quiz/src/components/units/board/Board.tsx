@@ -21,7 +21,7 @@ export default function Board(props) {
         display: flex;
         flex-direction: row;
         justify-content: left;
-        font-size: 20px;
+        font-size: 15px;
     `;
 
     return (
