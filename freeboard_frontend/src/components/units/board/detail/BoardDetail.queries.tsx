@@ -5,16 +5,18 @@ export const FETCH_BOARD = gql`
         fetchBoard(boardId: $boardId) {
             _id
             writer
+            createdAt
             title
             images
             contents
             youtubeUrl
+            likeCount
+            dislikeCount
             boardAddress {
                 zipcode
                 address
                 addressDetail
             }
-            createdAt
         }
     }
 `;

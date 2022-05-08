@@ -90,10 +90,11 @@ export const IconWrapper = styled.div`
     text-align: center;
 `;
 
-export const LinkIcon = styled.img``;
+// export const LinkIcon = styled.img``;
 
-export const LikeIcon = styled(LikeOutlined)`
-    font-size: 24px;
+export const LikeIconButton = styled.img`
+    width: 40px;
+    height: 40px;
     color: #ffd600;
     margin: 0px 20px;
     cursor: pointer;
@@ -101,10 +102,13 @@ export const LikeIcon = styled(LikeOutlined)`
 
 export const LikeCount = styled.div`
     color: #ffd600;
+    width: auto;
+    height: auto;
 `;
 
-export const DislikeIcon = styled(DislikeOutlined)`
-    font-size: 24px;
+export const DislikeIconButton = styled.img`
+    width: 40px;
+    height: 40px;
     color: #828282;
     margin: 0px 20px;
     cursor: pointer;
@@ -112,6 +116,8 @@ export const DislikeIcon = styled(DislikeOutlined)`
 
 export const DislikeCount = styled.div`
     color: #828282;
+    width: auto;
+    height: auto;
 `;
 
 export const Contents = styled.div`

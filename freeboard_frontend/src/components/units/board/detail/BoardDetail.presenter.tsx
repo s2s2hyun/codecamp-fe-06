@@ -36,10 +36,16 @@ export default function BoardDetailUI(props: IBoardDetailUIProps) {
                     )}
                     <S.LikeWrapper>
                         <S.IconWrapper>
-                            <S.LikeIcon onClick={props.onClickLike} />
+                            <S.LikeIconButton
+                                onClick={props.onClickLike}
+                                src={"/image/ddabong.png"}
+                            ></S.LikeIconButton>
                             <S.LikeCount>{props.data?.fetchBoard.likeCount}</S.LikeCount>
                         </S.IconWrapper>
-                        <S.DislikeIcon onClick={props.onClickDislike} />
+                        <S.DislikeIconButton
+                            onClick={props.onClickDislike}
+                            src={"/image/underddabong.png"}
+                        ></S.DislikeIconButton>
                         <S.DislikeCount>{props.data?.fetchBoard.dislikeCount}</S.DislikeCount>
                     </S.LikeWrapper>
                 </S.Body>

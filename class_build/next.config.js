@@ -2,7 +2,7 @@
 const nextConfig = {
     reactStrictMode: true,
     trailingSlash: true,
-    generateBuildId: () => "codecamp-6",
+    generateBuildId: () => "typiano",
     exportPathMap: () => ({
         "/": { page: "/" },
         "/boards": { page: "/boards" },
